@@ -1,0 +1,91 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+:root {
+  --accordion-trigger-line-width: 18px;
+  --accordion-trigger-line-height: 3px;
+  --accordion-trigger-line-color: currentColor;
+}
+
+.shb-accordion__header {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-top: var(--unit);
+  padding-bottom: var(--unit);
+  max-width: 100%;
+  justify-content: space-between;
+}
+.shb-accordion__title {
+  flex: auto;
+}
+.shb-accordion__content {
+  overflow: hidden;
+}
+@media screen {
+  .shb-accordion__content[aria-hidden=true] {
+    opacity: 0;
+    max-height: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .shb-accordion__content[aria-hidden=true] * {
+    display: none;
+  }
+}
+.shb-accordion__trigger {
+  display: none;
+  background: rgba(255, 255, 255, 0.01);
+  border: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.shb-accordion__trigger[aria-expanded] {
+  display: block;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+@media screen {
+  .shb-accordion__trigger[aria-expanded]::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.01);
+  }
+}
+@media screen {
+  .shb-accordion__trigger[aria-expanded=false] > .c-accordion__triggericon::before {
+    transform: translateY(-50%) rotate(90deg);
+  }
+}
+@media screen {
+  .shb-accordion__trigger[aria-expanded=false] > .c-accordion__triggericon::after {
+    transform: translateY(-50%);
+  }
+}
+.shb-accordion__triggericon {
+  cursor: pointer;
+  display: block;
+  position: relative;
+}
+@media screen {
+  .shb-accordion__triggericon::after, .shb-accordion__triggericon::before {
+    content: "";
+    display: block;
+    width: var(--accordion-trigger-line-width);
+    height: var(--accordion-trigger-line-height);
+    background-color: var(--accordion-trigger-line-color);
+    position: absolute;
+    top: 50%;
+    right: 0;
+  }
+}
+
+/*# sourceMappingURL=style-index.css.map*/

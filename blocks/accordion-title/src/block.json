@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "shb/accordion-title",
+	"version": "0.1.0",
+	"title": "Block: Accordion Title",
+	"category": "widgets",
+	"icon": "arrow-down-alt2",
+	"description": "Provides the title block for the accordion block. This block is only allowed inside the accordion block and cannot be used outside of it.",
+	"parent": ["shb/accordion"],
+	"supports": {
+		"align": true,
+		"reusable": false,
+		"html": false,
+		"color": {
+			"gradients": true,
+			"link": true
+		}
+	},
+	"textdomain": "shb-accordion",
+	"usesContext": ["accordionID"],
+	"editorScript": "file:./index.js"
+}

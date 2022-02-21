@@ -1,0 +1,30 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "shb/accordion",
+	"version": "0.1.0",
+	"title": "Block: Accordion",
+	"category": "widgets",
+	"icon": "arrow-down-alt2",
+	"description": "Provides a block which acts like an accordion.",
+	"supports": {
+		"align": true,
+		"reusable": false,
+		"html": false,
+		"color": {
+			"gradients": true,
+			"link": true
+		}
+	},
+	"textdomain": "shb-accordion",
+	"editorScript": "file:./index.js",
+	"style": "file:./style-index.css",
+	"attributes": {
+		"accordionID": {
+			"type": "string"
+		}
+	},
+	"providesContext": {
+		"accordionID": "accordionID"
+	}
+}
