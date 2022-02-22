@@ -1,7 +1,8 @@
-:root {
-	--accordion-trigger-line-width: 18px;
-	--accordion-trigger-line-height: 3px;
-	--accordion-trigger-line-color: currentColor;
+:root,
+body {
+	--shb-accordion-trigger-line-width: 18px;
+	--shb-accordion-trigger-line-height: 3px;
+	--shb-accordion-trigger-line-color: currentColor;
 }
 
 .shb-accordion {
@@ -90,9 +91,9 @@
 			@media screen {
 				content: '';
 				display: block;
-				width: var(--accordion-trigger-line-width);
-				height: var(--accordion-trigger-line-height);
-				background-color: var(--accordion-trigger-line-color);
+				width: var(--shb-accordion-trigger-line-width);
+				height: var(--shb-accordion-trigger-line-height);
+				background-color: var(--shb-accordion-trigger-line-color);
 				position: absolute;
 				top: 50%;
 				right: 0;
