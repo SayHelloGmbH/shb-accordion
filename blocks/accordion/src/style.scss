@@ -65,7 +65,7 @@
 		}
 
 		&[aria-expanded='false'] {
-			& > .c-accordion__triggericon {
+			& > .shb-accordion__triggericon {
 				&::before {
 					@media screen {
 						transform: translateY(-50%) rotate(90deg);
