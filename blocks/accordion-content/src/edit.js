@@ -16,6 +16,7 @@ export default function edit() {
 	const blockProps = useBlockProps();
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		template: TEMPLATE,
+		templateLock: false,
 	} );
 	return (
 		<>

@@ -16,11 +16,12 @@ export default function edit( { attributes, setAttributes } ) {
 	const blockProps = useBlockProps();
 	const innerBlocksProps = useInnerBlocksProps( blockProps, {
 		template: TEMPLATE,
-		templateLock: true,
+		templateLock: 'all',
 	} );
 
-	setAttributes( { accordionID: blockProps[ 'data-block' ] } );
-	// console.log( attributes.accordionID );
+	if ( !attributes.accordionID ) {
+		setAttributes( { accordionID: blockProps[ 'data-block' ] } );
+	}
 
 	return (
 		<>
