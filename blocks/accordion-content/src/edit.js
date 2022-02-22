@@ -18,6 +18,7 @@ export default function edit() {
 		template: TEMPLATE,
 		templateLock: false,
 	} );
+
 	return (
 		<>
 			<div {...innerBlocksProps} /> < />

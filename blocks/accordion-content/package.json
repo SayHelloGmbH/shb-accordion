@@ -1,6 +1,6 @@
 {
 	"name": "shb-accordion-content",
-	"version": "0.1.1",
+	"version": "0.1.0",
 	"description": "Provides the content block for the accordion block. This block is only allowed inside the accordion block and cannot be used outside of it.",
 	"author": "Say Hello GmbH",
 	"license": "GPL-2.0-or-later",

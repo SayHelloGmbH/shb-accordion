@@ -3,9 +3,14 @@
  */
 import { useBlockProps, useInnerBlocksProps } from "@wordpress/block-editor";
 
+/**
+ * Styles
+ */
+import './editor.scss';
+
 const TEMPLATE = [
 	[
-		"shb/accordion-title",
+		"shb/accordion-header",
 	],
 	[
 		"shb/accordion-content",

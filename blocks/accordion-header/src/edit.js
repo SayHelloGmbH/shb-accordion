@@ -7,7 +7,7 @@ const TEMPLATE = [
 	[
 		"core/paragraph",
 		{
-			placeholder: "Add blocks here, which will be displayed as the accordion title.",
+			placeholder: "Add blocks here, which will be displayed as the accordion header.",
 		},
 	],
 ];

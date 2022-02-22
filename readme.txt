@@ -2,7 +2,7 @@
 Contributors:      joelmelon
 Tags:              block
 Tested up to:      5.9
-Stable tag:        0.1.1
+Stable tag:        0.1.2
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,6 +15,10 @@ Provides a block which acts like an accordion.
 3. You can now add the “Accordion” block.
 
 == Changelog ==
+
+= 0.1.2 =
+* Rename shb/accordion-title to shb/accordion-content
+* Proper class setup with core block classes
 
 = 0.1.1 =
 * Setup correct template locking. Now it is not possible to edit the innerBlock of shb/accordion, but it is possible to insert several blocks into the shb/accordion-title & shb/accordion-content block.

@@ -5,7 +5,7 @@
  * Description:       Provides a block which acts like an accordion.
  * Requires at least: 5.8
  * Requires PHP:      7.0
- * Version:           0.1.1
+ * Version:           0.1.2
  * Author:            Say Hello GmbH
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -13,8 +13,6 @@
  *
  * @package shb
  */
-
-$shbAccordionAdditionalBlockClass = 'shb-accordion';
 
 /**
  * Renders the `shb/accordion` block on the server.
@@ -31,48 +29,48 @@ function render_block_shb_accordion($attributes, $content, $block)
 	}
 
 	$blockWrapperAttributes = get_block_wrapper_attributes();
-	$blockWrapperAttributes = shb_accordion_extend_wrapper_classes($blockWrapperAttributes);
+
 	$accordionID = isset($block->attributes['accordionID']) ? $block->attributes['accordionID'] : '';
 
-
 	return sprintf(
-		'<div %1$s data-accordion>%2$s</div>',
+		'<div %1$s data-shb-accordion>%2$s</div>',
 		$blockWrapperAttributes,
 		$content
 	);
 }
 
 /**
- * Renders the `shb/accordion-title` block on the server.
+ * Renders the `shb/accordion-header` block on the server.
  *
  * @param array  $attributes Block attributes.
  * @param string $content    Block default content.
  *
  * @return string Returns the wrapper for the block.
  */
-function render_block_shb_accordion_title($attributes, $content, $block)
+function render_block_shb_accordion_header($attributes, $content, $block)
 {
 	if (empty(trim($content))) {
 		return '';
 	}
 
-	global $shbAccordionAdditionalBlockClass;
 	$blockWrapperAttributes = get_block_wrapper_attributes();
-	$blockWrapperAttributes = shb_accordion_extend_wrapper_classes($blockWrapperAttributes, 'header');
+	preg_match_all('/class="(.*?)"/s', $blockWrapperAttributes, $match);
+	$classNameBase = $match[1][0] ?? 'UNDEFINED_CLASS_NAME_BASE';
+
 	$accordionID = isset($block->context['accordionID']) ? $block->context['accordionID'] : '';
 
-	$button = '<button data-accordion-toggler aria-expanded="false"';
-	$button .= ' class="' . $shbAccordionAdditionalBlockClass . '__trigger' . '"';
-	$button .= ' aria-controls="accordion-' . $accordionID . '"';
+	$button = '<button data-shb-accordion-toggler aria-expanded="false"';
+	$button .= ' class="' . $classNameBase . '__trigger' . '"';
+	$button .= ' aria-controls="shb-accordion-' . $accordionID . '"';
 	$button .= '>';
 	$button .= '<span class="screen-reader-text">' . _x('Diesen Bereich zu-/aufklappen', 'Accordion button text', 'shb-accordion') . '</span>';
-	$button .= '<span class="' . $shbAccordionAdditionalBlockClass . '__triggericon' . '"></span>';
+	$button .= '<span class="' . $classNameBase . '__triggericon' . '"></span>';
 	$button .= '</button>';
 
 	return sprintf(
-		'<div %1$s data-accordion-title>%2$s%3$s</div>',
+		'<div %1$s data-shb-accordion-header>%2$s%3$s</div>',
 		$blockWrapperAttributes,
-		'<div class="' . $shbAccordionAdditionalBlockClass . '__title' . '">' . $content . '</div>',
+		'<div class="' . $classNameBase . '__title' . '">' . $content . '</div>',
 		$button
 	);
 }
@@ -92,11 +90,11 @@ function render_block_shb_accordion_content($attributes, $content, $block)
 	}
 
 	$blockWrapperAttributes = get_block_wrapper_attributes();
-	$blockWrapperAttributes = shb_accordion_extend_wrapper_classes($blockWrapperAttributes, 'content');
+
 	$accordionID = isset($block->context['accordionID']) ? $block->context['accordionID'] : '';
 
 	return sprintf(
-		'<div %1$s data-accordion-content id="accordion-' . $accordionID . '" aria-hidden="true">%2$s</div>',
+		'<div %1$s data-shb-accordion-content id="shb-accordion-' . $accordionID . '" aria-hidden="true">%2$s</div>',
 		$blockWrapperAttributes,
 		$content
 	);
@@ -112,9 +110,9 @@ function render_block_shb_accordion_content($attributes, $content, $block)
 function create_block_shb_accordion_blocks_init()
 {
 	register_block_type_from_metadata(
-		__DIR__ . '/blocks/accordion-title/build',
+		__DIR__ . '/blocks/accordion-header/build',
 		[
-			'render_callback' => 'render_block_shb_accordion_title',
+			'render_callback' => 'render_block_shb_accordion_header',
 		]
 	);
 	register_block_type_from_metadata(
@@ -131,51 +129,3 @@ function create_block_shb_accordion_blocks_init()
 	);
 }
 add_action('init', 'create_block_shb_accordion_blocks_init');
-
-/**
- * Searches for class="" attribute in string. Extracts the value and extends the value with the appropriate element class.
- *
- * @param array  $string     The string from get_block_wrapper_attributes().
- * @param string $element    Specify accordion element.
- *
- * @return string Returns the string extended with element class.
- */
-function shb_accordion_extend_wrapper_classes($string = '', $element = 'accordion')
-{
-	global $shbAccordionAdditionalBlockClass;
-
-	// get value between class="" from input string
-	preg_match_all('/class="(.*?)"/s', $string, $match);
-	$classes = '';
-
-	switch ($element) {
-		case 'header':
-		case 'content':
-			if (!empty($match[0])) {
-				// if class attribute exists and value found
-				$classes = $match[1][0];
-				$extendedString = str_replace($classes, $classes . ' ' . $shbAccordionAdditionalBlockClass . '__' . $element, $string);
-			} else {
-				// if class attribute does not exist
-				$extendedString .= ' class="' . $shbAccordionAdditionalBlockClass . '__' . $element;
-			}
-			break;
-
-		default:
-			if (!empty($match[0])) {
-				// if class attribute exists and value found
-				$classes = $match[1][0];
-				$extendedString = str_replace($classes, $classes . ' ' . $shbAccordionAdditionalBlockClass, $string);
-			} else {
-				// if class attribute does not exist
-				$extendedString .= ' class="' . $shbAccordionAdditionalBlockClass . '"';
-			}
-			break;
-	}
-
-	if (empty($extendedString) || 'string' != gettype($extendedString)) {
-		return $string;
-	} else {
-		return $extendedString;
-	}
-}
