@@ -24,6 +24,8 @@ export default function edit( { attributes, setAttributes } ) {
 		templateLock: 'all',
 	} );
 
+	console.log( blockProps );
+
 	if ( !attributes.accordionID ) {
 		setAttributes( { accordionID: blockProps[ 'data-block' ] } );
 	}

@@ -30,7 +30,7 @@ function render_block_shb_accordion($attributes, $content, $block)
 
 	$blockWrapperAttributes = get_block_wrapper_attributes();
 
-	$accordionID = isset($block->attributes['accordionID']) ? $block->attributes['accordionID'] : '';
+	$accordionID = isset($block->attributes['accordionID']) ? $block->attributes['accordionID'] : do_shortcode('[shb_fallback_accordion_ID]');
 
 	return sprintf(
 		'<div %1$s data-shb-accordion>%2$s</div>',
@@ -57,7 +57,7 @@ function render_block_shb_accordion_header($attributes, $content, $block)
 	preg_match_all('/class="(.*?)"/s', $blockWrapperAttributes, $match);
 	$classNameBase = $match[1][0] ?? 'UNDEFINED_CLASS_NAME_BASE';
 
-	$accordionID = isset($block->context['accordionID']) ? $block->context['accordionID'] : '';
+	$accordionID = isset($block->context['accordionID']) ? $block->context['accordionID'] : do_shortcode('[shb_fallback_accordion_ID]');
 
 	$button = '<button data-shb-accordion-toggler aria-expanded="false"';
 	$button .= ' class="' . $classNameBase . '__trigger' . '"';
@@ -91,7 +91,7 @@ function render_block_shb_accordion_content($attributes, $content, $block)
 
 	$blockWrapperAttributes = get_block_wrapper_attributes();
 
-	$accordionID = isset($block->context['accordionID']) ? $block->context['accordionID'] : '';
+	$accordionID = isset($block->context['accordionID']) ? $block->context['accordionID'] : do_shortcode('[shb_fallback_accordion_ID]');
 
 	return sprintf(
 		'<div %1$s data-shb-accordion-content id="shb-accordion-' . $accordionID . '" aria-hidden="true">%2$s</div>',
@@ -129,3 +129,16 @@ function create_block_shb_accordion_blocks_init()
 	);
 }
 add_action('init', 'create_block_shb_accordion_blocks_init');
+
+/**
+ * As you can see in the code above, the shortcode is used if there is no accordionID available.
+ * If you use the accordion block e.g. in a FSE template query loop block, it will not be possible to set an unique.
+ * So if you use this in the query loop block, do not set the accordionID inside the FSE tempalte.
+ * If you set it up like this, the accordionID will result equal to the post id
+ *
+ */
+function shortcode_for_block_shb_accordion_fallback_ID()
+{
+	return get_the_ID();
+}
+add_shortcode('shb_fallback_accordion_ID', 'shortcode_for_block_shb_accordion_fallback_ID');
