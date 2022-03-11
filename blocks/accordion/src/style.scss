@@ -1,106 +1,108 @@
-:root,
-body {
-	--wp-block-shb-accordion-trigger-line-width: 18px;
-	--wp-block-shb-accordion-trigger-line-height: 3px;
-	--wp-block-shb-accordion-trigger-line-color: currentColor;
-}
-
 .wp-block-shb-accordion {
-	// add shb/accordion styles here
+    --wp-block-shb-accordion-trigger-line-width: 18px;
+    --wp-block-shb-accordion-trigger-line-height: 3px;
+    --wp-block-shb-accordion-trigger-line-color: currentColor;
 }
 
 .wp-block-shb-accordion-content {
-	overflow: hidden;
+    overflow: hidden;
 
-	&[aria-hidden='true'] {
-		@media screen {
-			opacity: 0;
-			max-height: 0;
-			margin-top: 0;
-			margin-bottom: 0;
-			* {
-				display: none;
-			}
-		}
-	}
+    &[aria-hidden="true"] {
+        @media screen {
+            opacity: 0;
+            max-height: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            * {
+                display: none;
+            }
+        }
+    }
 }
 
 .wp-block-shb-accordion-header {
-	display: flex;
-	align-items: center;
-	position: relative;
-	padding-top: var(--unit);
-	padding-bottom: var(--unit);
-	max-width: 100%;
-	justify-content: space-between;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-top: var(--unit);
+    padding-bottom: var(--unit);
+    max-width: 100%;
+    justify-content: space-between;
 
-	&__title {
-		position: relative;
-		flex: auto;
-	}
+    &__title {
+        position: relative;
+        flex: auto;
+    }
 
-	&__trigger {
-		display: none;
-		background: rgba(255, 255, 255, 0.01); // Ensures that the full button is clickable in older browsers
-		border: none;
-		-webkit-appearance: none;
-		cursor: pointer;
+    &__trigger {
+        display: none;
+        color: var(--wp-block-shb-accordion-trigger-line-color, currentColor);
+        background: rgba(
+            255,
+            255,
+            255,
+            0.01
+        ); // Ensures that the full button is clickable in older browsers
+        border: none;
+        -webkit-appearance: none;
+        cursor: pointer;
 
-		&[aria-expanded] {
-			display: block;
-			padding: 0;
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
+        &:hover,
+        &:active {
+            color: var(--wp-block-shb-accordion-trigger-line-color, currentColor);
+        }
 
-			&::after {
-				@media screen {
-					content: '';
-					position: absolute;
-					bottom: 0;
-					right: 0;
-					left: 0;
-					top: 0;
-					background-color: rgba(255, 255, 255, 0.01);
-				}
-			}
-		}
+        &[aria-expanded] {
+            display: block;
+            padding: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
 
-		&[aria-expanded='false'] {
-			& > .wp-block-shb-accordion__triggericon {
-				&::before {
-					@media screen {
-						transform: translateY(-50%) rotate(90deg);
-					}
-				}
-				&::after {
-					@media screen {
-						transform: translateY(-50%);
-					}
-				}
-			}
-		}
+            &::after {
+                @media screen {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    left: 0;
+                    top: 0;
+                    background-color: rgba(255, 255, 255, 0.01);
+                }
+            }
+        }
 
-	}
+        &[aria-expanded="false"] {
+            .wp-block-shb-accordion-header__triggericon {
+                transform: translateY(calc(var(--wp-block-shb-accordion-trigger-line-height) / 2));
+                &::before {
+                    transform: translateY(-50%) rotate(90deg);
+                }
+                &::after {
+                    transform: translateY(-50%);
+                }
+            }
+        }
+    }
 
-	&__triggericon {
-		cursor: pointer;
-		display: block;
-		position: relative;
-		&::after,
-		&::before {
-			@media screen {
-				content: '';
-				display: block;
-				width: var(--wp-block-shb-accordion-trigger-line-width);
-				height: var(--wp-block-shb-accordion-trigger-line-height);
-				background-color: var(--wp-block-shb-accordion-trigger-line-color);
-				position: absolute;
-				top: 50%;
-				right: 0;
-			}
-		}
-	}
+    &__triggericon {
+        cursor: pointer;
+        display: block;
+        position: relative;
+        &::after,
+        &::before {
+            @media screen {
+                content: "";
+                display: block;
+                width: var(--wp-block-shb-accordion-trigger-line-width);
+                height: var(--wp-block-shb-accordion-trigger-line-height);
+                background-color: var(--wp-block-shb-accordion-trigger-line-color);
+                position: absolute;
+                top: 50%;
+                right: 0;
+            }
+        }
+    }
 }

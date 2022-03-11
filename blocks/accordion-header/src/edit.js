@@ -5,8 +5,6 @@ import { useBlockProps, useInnerBlocksProps } from "@wordpress/block-editor";
 import { Fragment } from "@wordpress/element";
 import { _x } from "@wordpress/i18n";
 
-import "./edit.scss";
-
 const TEMPLATE = [
     [
         "core/paragraph",

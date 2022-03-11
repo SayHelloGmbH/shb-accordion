@@ -1,3 +1,11 @@
-.wp-block-shb-accordion-header {
-	display: block;
+.wp-block-shb-accordion {
+    &-header {
+        outline: 1px dotted silver;
+        padding: var(--shb-accordion--header--edit--padding, 0 1rem);
+    }
+
+    &-content {
+        outline: 1px dotted silver;
+        padding: var(--shb-accordion--header--padding, 0 1rem);
+    }
 }
