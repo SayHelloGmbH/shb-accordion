@@ -16,6 +16,10 @@ Provides a block which acts like an accordion.
 
 == Changelog ==
 
+= 0.2.0 =
+* Fix and extend default CSS styling
+* Add translation files
+
 = 0.1.2 =
 * Rename shb/accordion-title to shb/accordion-content
 * Proper class setup with core block classes

@@ -3,13 +3,15 @@
 /**
  * Plugin Name:       Block: Accordion
  * Description:       Provides a block which acts like an accordion.
- * Requires at least: 5.8
+ * Requires at least: 5.9
  * Requires PHP:      7.0
- * Version:           0.1.2
+ * Version:           0.2.0
  * Author:            Say Hello GmbH
+ * Author URI:        https://www.sayhello.ch/
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       shb-accordion
+ * Domain Path:       /languages
  *
  * @package shb
  */
@@ -69,7 +71,7 @@ function render_block_shb_accordion_header($attributes, $content, $block)
 	$button .= ' class="' . $classNameBase . '__trigger' . '"';
 	$button .= ' aria-controls="shb-accordion-' . $accordionID . '"';
 	$button .= '>';
-	$button .= '<span class="screen-reader-text">' . _x('Diesen Bereich zu-/aufklappen', 'Accordion button text', 'shb-accordion') . '</span>';
+	$button .= '<span class="screen-reader-text">' . _x('Show/hide content', 'Accordion button text', 'shb-accordion') . '</span>';
 	$button .= '<span class="' . $classNameBase . '__triggericon' . '"></span>';
 	$button .= '</button>';
 
@@ -138,3 +140,9 @@ function create_block_shb_accordion_blocks_init()
 	);
 }
 add_action('init', 'create_block_shb_accordion_blocks_init');
+
+function create_block_shb_accordion_set_script_translations()
+{
+	wp_set_script_translations('shb-accordion', 'shb-accordion');
+}
+add_action('init', 'create_block_shb_accordion_set_script_translations');
