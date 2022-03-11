@@ -9,10 +9,9 @@ import save from "./save";
 /**
  * Styles
  */
-import './style.scss';
+import "./style.scss";
 
-registerBlockType( "shb/accordion", {
-	edit,
-	save,
-} );
-$
+registerBlockType("shb/accordion", {
+    edit,
+    save,
+});

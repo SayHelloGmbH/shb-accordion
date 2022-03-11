@@ -7,6 +7,6 @@ import edit from "./edit";
 import save from "./save";
 
 registerBlockType("shb/accordion-content", {
-	edit,
-	save,
+    edit,
+    save,
 });

@@ -37,12 +37,12 @@ function edit(_ref) {
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
   const innerBlocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useInnerBlocksProps)(blockProps, {
     template: TEMPLATE,
-    templateLock: 'all'
+    templateLock: "all"
   });
 
   if (!attributes.accordionID) {
     setAttributes({
-      accordionID: blockProps['data-block']
+      accordionID: blockProps["data-block"]
     });
   }
 
@@ -79,7 +79,6 @@ __webpack_require__.r(__webpack_exports__);
   edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
-$;
 
 /***/ }),
 
