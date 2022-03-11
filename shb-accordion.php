@@ -5,7 +5,7 @@
  * Description:       Provides a block which acts like an accordion.
  * Requires at least: 5.9
  * Requires PHP:      7.0
- * Version:           0.2.0
+ * Version:           0.2.1
  * Author:            Say Hello GmbH
  * Author URI:        https://www.sayhello.ch/
  * License:           GPL-2.0-or-later
@@ -35,7 +35,7 @@ function render_block_shb_accordion($attributes, $content, $block)
 	$accordionID = isset($block->attributes['accordionID']) ? $block->attributes['accordionID'] : '';
 
 	// Allow modification via filter
-	$accordionID = apply_filters('shb-accordion/accordion-id', $accordionID);
+	$accordionID = apply_filters('shb-accordion/accordion-id', $accordionID, $block);
 
 	return sprintf(
 		'<div %1$s data-shb-accordion>%2$s</div>',
@@ -65,7 +65,7 @@ function render_block_shb_accordion_header($attributes, $content, $block)
 	$accordionID = isset($block->context['accordionID']) ? $block->context['accordionID'] : '';
 
 	// Allow modification via filter
-	$accordionID = apply_filters('shb-accordion/accordion-id', $accordionID);
+	$accordionID = apply_filters('shb-accordion/accordion-id', $accordionID, $block);
 
 	$button = '<button data-shb-accordion-toggler aria-expanded="false"';
 	$button .= ' class="' . $classNameBase . '__trigger' . '"';
@@ -102,7 +102,7 @@ function render_block_shb_accordion_content($attributes, $content, $block)
 	$accordionID = isset($block->context['accordionID']) ? $block->context['accordionID'] : '';
 
 	// Allow modification via filter
-	$accordionID = apply_filters('shb-accordion/accordion-id', $accordionID);
+	$accordionID = apply_filters('shb-accordion/accordion-id', $accordionID, $block);
 
 	return sprintf(
 		'<div %1$s data-shb-accordion-content id="shb-accordion-' . $accordionID . '" aria-hidden="true">%2$s</div>',

@@ -2,7 +2,7 @@
 Contributors:      joelmelon
 Tags:              block
 Tested up to:      5.9
-Stable tag:        0.1.2
+Stable tag:        0.2.1
 License:           GPL-2.0-or-later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,6 +15,10 @@ Provides a block which acts like an accordion.
 3. You can now add the “Accordion” block.
 
 == Changelog ==
+
+= 0.2.1 =
+* Fix duplication of accordion IDs
+* Remove unnecessary JS element wrappers
 
 = 0.2.0 =
 * Fix and extend default CSS styling
