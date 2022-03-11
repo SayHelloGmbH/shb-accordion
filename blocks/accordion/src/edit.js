@@ -12,18 +12,13 @@ const TEMPLATE = [["shb/accordion-header"], ["shb/accordion-content"]];
 
 export default function edit({ attributes, setAttributes }) {
     const blockProps = useBlockProps();
+
     const innerBlocksProps = useInnerBlocksProps(blockProps, {
         template: TEMPLATE,
         templateLock: "all",
     });
 
-    if (!attributes.accordionID) {
-        setAttributes({ accordionID: blockProps["data-block"] });
-    }
+    setAttributes({ accordionID: blockProps.id });
 
-    return (
-        <>
-            <div {...innerBlocksProps} />{" "}
-        </>
-    );
+    return <div {...innerBlocksProps} />;
 }

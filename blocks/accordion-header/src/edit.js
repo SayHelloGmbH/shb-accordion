@@ -2,7 +2,6 @@
  * WordPress dependencies
  */
 import { useBlockProps, useInnerBlocksProps } from "@wordpress/block-editor";
-import { Fragment } from "@wordpress/element";
 import { _x } from "@wordpress/i18n";
 
 const TEMPLATE = [
@@ -25,9 +24,5 @@ export default function edit() {
         templateLock: false,
     });
 
-    return (
-        <Fragment>
-            <div {...innerBlocksProps} />
-        </Fragment>
-    );
+    return <div {...innerBlocksProps} />;
 }

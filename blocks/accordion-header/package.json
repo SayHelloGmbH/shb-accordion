@@ -1,6 +1,6 @@
 {
     "name": "shb-accordion-header",
-    "version": "0.1.0",
+    "version": "0.2.1",
     "description": "Provides the header block for the accordion block. This block is only allowed inside the accordion block.",
     "author": "Say Hello GmbH",
     "license": "GPL-2.0-or-later",
