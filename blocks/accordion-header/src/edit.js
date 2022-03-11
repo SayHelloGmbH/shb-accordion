@@ -2,36 +2,34 @@
  * WordPress dependencies
  */
 import { useBlockProps, useInnerBlocksProps } from "@wordpress/block-editor";
+import { Fragment } from "@wordpress/element";
+import { _x } from "@wordpress/i18n";
+
+import "./edit.scss";
 
 const TEMPLATE = [
-	[
-		"core/paragraph",
-		{
-			placeholder: "Add blocks here, which will be displayed as the accordion header.",
-		},
-	],
+    [
+        "core/paragraph",
+        {
+            placeholder: _x(
+                "Add blocks here, which will be displayed as the accordion header.",
+                "Placeholder",
+                "sb-accordion"
+            ),
+        },
+    ],
 ];
 
-export default function edit( props, { attributes } ) {
-	const blockProps = useBlockProps();
-	const innerBlocksProps = useInnerBlocksProps( blockProps, {
-		template: TEMPLATE,
-		templateLock: false,
-		allowedBlocks: [
-			'core/heading',
-			'core/paragraph',
-			'core/button',
-			'core/post-title',
-			'core/post-excerpt',
-			'core/post-author',
-			'core/post-date',
-			'core/post-categories',
-			'core/post-tag'
-		]
-	} );
+export default function edit() {
+    const blockProps = useBlockProps();
+    const innerBlocksProps = useInnerBlocksProps(blockProps, {
+        template: TEMPLATE,
+        templateLock: false,
+    });
 
-	return (
-		<>
-			<div {...innerBlocksProps} /> < />
-	);
+    return (
+        <Fragment>
+            <div {...innerBlocksProps} />
+        </Fragment>
+    );
 }
