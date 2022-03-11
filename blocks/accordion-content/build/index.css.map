@@ -1,0 +1,1 @@
+{"version":3,"file":"index.css","mappings":";;;AAAA;EACC;EACA;AACD,C","sources":["webpack://shb-accordion-content/./src/edit.scss"],"sourcesContent":[".wp-block-shb-accordion-content {\n\toutline: 1px dotted silver;\n\tpadding: var(--shb-accordion--header--padding, 0 1rem);\n}\n"],"names":[],"sourceRoot":""}
