@@ -2,11 +2,12 @@
     "$schema": "https://schemas.wp.org/trunk/block.json",
     "apiVersion": 2,
     "name": "shb/accordion",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "title": "Block: Accordion",
     "category": "widgets",
     "icon": "arrow-down-alt2",
     "description": "Provides a block which acts like an accordion.",
+    "keywords": ["accordion", "akkordeon"],
     "supports": {
         "align": true,
         "reusable": false,

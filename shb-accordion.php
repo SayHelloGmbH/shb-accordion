@@ -5,7 +5,7 @@
  * Description:       Provides a block which acts like an accordion.
  * Requires at least: 5.9
  * Requires PHP:      7.0
- * Version:           0.2.1
+ * Version:           0.2.2
  * Author:            Say Hello GmbH
  * Author URI:        https://www.sayhello.ch/
  * License:           GPL-2.0-or-later

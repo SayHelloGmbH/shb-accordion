@@ -10,7 +10,7 @@ import "./editor.scss";
 
 const TEMPLATE = [["shb/accordion-header"], ["shb/accordion-content"]];
 
-export default function edit({ attributes, setAttributes }) {
+export default function edit({ setAttributes }) {
     const blockProps = useBlockProps();
 
     const innerBlocksProps = useInnerBlocksProps(blockProps, {
