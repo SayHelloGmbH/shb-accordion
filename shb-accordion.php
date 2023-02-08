@@ -5,7 +5,7 @@
  * Description:       Provides a block which acts like an accordion.
  * Requires at least: 5.9
  * Requires PHP:      7.0
- * Version:           0.2.2
+ * Version:           0.2.3
  * Author:            Say Hello GmbH
  * Author URI:        https://www.sayhello.ch/
  * License:           GPL-2.0-or-later
@@ -59,8 +59,7 @@ function render_block_shb_accordion_header($attributes, $content, $block)
 	}
 
 	$blockWrapperAttributes = get_block_wrapper_attributes();
-	preg_match_all('/class="(.*?)"/s', $blockWrapperAttributes, $match);
-	$classNameBase = $match[1][0] ?? 'UNDEFINED_CLASS_NAME_BASE';
+	$classNameBase = wp_get_block_default_classname($block->name);
 
 	$accordionID = isset($block->context['accordionID']) ? $block->context['accordionID'] : '';
 
